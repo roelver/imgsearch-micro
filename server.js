@@ -8,16 +8,11 @@ var mongoose = require('mongoose');
 var app = express();
 require('dotenv').load();
 
-mongoose.connect(process.env.MONGO_URI);
+var mongo = process.env.MONGO_URI || 'mongodb://localhost:27017/imgsearch'
+mongoose.connect(mongo);
 
 app.use('/controllers', express.static(process.cwd() + '/app/controllers'));
 app.use('/public', express.static(process.cwd() + '/public'));
-
-// app.use(session({
-// 	secret: 'secretClementine',
-// 	resave: false,
-// 	saveUninitialized: true
-// }));
 
 routes(app);
 
