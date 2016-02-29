@@ -8,7 +8,7 @@ var mongoose = require('mongoose');
 var app = express();
 require('dotenv').load();
 
-var mongo = process.env.MONGO_URI || 'mongodb://localhost:27017/imgsearch'
+var mongo = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/imgsearch'
 mongoose.connect(mongo);
 
 app.use('/controllers', express.static(process.cwd() + '/app/controllers'));
